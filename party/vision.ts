@@ -4,12 +4,21 @@ export default class VisionServer implements Party.Server {
   constructor(public room: Party.Room) {}
 
   async onRequest(req: Party.Request) {
+    const url = new URL(req.url);
     if (req.method === "POST") {
-      const data = (await req.json()) as any;
-      const response = {
-        images: await this.fetchImageUrls(data.url),
-      };
-      return Response.json(response);
+      if (url.pathname.endsWith("/images")) {
+        const data = (await req.json()) as any;
+        const response = {
+          images: await this.fetchImageUrls(data.url),
+        };
+        return Response.json(response);
+      } else if (url.pathname.endsWith("/describe")) {
+        const data = (await req.json()) as any;
+        const response = {
+          description: "TK",
+        };
+        return Response.json(response);
+      }
     }
 
     return new Response("Method Not Allowed", { status: 405 });

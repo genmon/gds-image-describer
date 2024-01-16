@@ -1,6 +1,7 @@
 import { useState, Suspense } from "react";
 import URLInput from "./URLInput";
 import ImageList from "./ImageList";
+import Viewer from "./Viewer";
 
 // can be null
 const DEFAULT_URL =
@@ -8,6 +9,7 @@ const DEFAULT_URL =
 
 export default function Describer({ partykitHost }: { partykitHost: string }) {
   const [url, setUrl] = useState<string | null>(DEFAULT_URL);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   if (!url) {
     return <URLInput url={url} setUrl={setUrl} />;
@@ -15,7 +17,20 @@ export default function Describer({ partykitHost }: { partykitHost: string }) {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      {url && <ImageList partykitHost={partykitHost} url={url} />}
+      {url && !imageUrl && (
+        <ImageList
+          partykitHost={partykitHost}
+          url={url}
+          setImageUrl={setImageUrl}
+        />
+      )}
+      {imageUrl && (
+        <Viewer
+          partykitHost={partykitHost}
+          imageUrl={imageUrl}
+          setImageUrl={setImageUrl}
+        />
+      )}
     </Suspense>
   );
 }

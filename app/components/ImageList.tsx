@@ -23,9 +23,11 @@ async function fetchImageList(partykitHost: string, url: string) {
 export default function ImageList({
   partykitHost,
   url,
+  setImageUrl,
 }: {
   partykitHost: string;
   url: string | null;
+  setImageUrl: (imageUrl: string | null) => void;
 }) {
   const { images } = suspend(async () => {
     if (!url) return { images: [] };
@@ -42,6 +44,12 @@ export default function ImageList({
         {images.map((imageUrl: string) => (
           <li key={imageUrl}>
             <code>{imageUrl}</code>
+            <button
+              className="bg-blue-300 hover:bg-blue-400 p-2 rounded-sm"
+              onClick={() => setImageUrl(imageUrl)}
+            >
+              Use
+            </button>
           </li>
         ))}
       </ul>
