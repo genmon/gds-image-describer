@@ -34,7 +34,7 @@ export default function AltTextSuggest({
 
   return (
     <div>
-      ✨ Description: <span className="bg-yellow-200">{description}</span>
+      ✨Description: <span className="bg-yellow-200">{description}</span>
     </div>
   );
 }
