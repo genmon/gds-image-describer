@@ -7,7 +7,7 @@ export default function URLInput({
   url: string | null;
   setUrl: (url: string | null) => void;
 }) {
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>(url ?? "");
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

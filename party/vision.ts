@@ -5,7 +5,9 @@ export default class VisionServer implements Party.Server {
 
   async onRequest(req: Party.Request) {
     if (req.method === "POST") {
-      const response = req;
+      const response = {
+        images: ["test URL 1", "test URL 2"],
+      };
       return Response.json(response);
     }
 
