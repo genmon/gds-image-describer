@@ -1,48 +1,25 @@
-# Welcome to 🎈 PartyKit ⤫ Remix 💿!
+# gds-image-describer
 
-This is a starter template for [Remix](https://remix.run) and [PartyKit](https://partykit.io). You can create a new project based on this template with the Remix CLI:
+This demo uses the GPT-4 Vision API to generate alt text for images. It helps us understand where this can be useful and what the limitations are.
 
-```sh
-npx create-remix@latest ./my-partymix-app --template partykit/remix-starter
-```
+The demo is scoped to the GDS blog. It works only with URLs that start with `https://gds.blog.gov.uk/...`.
 
-- [Remix Docs](https://remix.run/docs)
-- [PartyKit Docs](https://docs.partykit.io/)
+## Initial observations
 
-_NB: This is a **beta** release, so expect some rough edges. Please file issues or feedback at https://github.com/partykit/remix-starter!_
+- The model is good at generating alt text-like descriptions...
+- ...but you wouldn't put them on a website without checking and potentially editing/rewriting first.
+
+Therefore something like this may fit into a "auto-suggest" type of workflow.
 
 ## Development
 
-You will be running two processes during development:
+To run this locally:
 
-- The Remix development server
-- The PartyKit server
+- clone the repo
+- install dependencies: `npm install`
+- [create an OpenAI API key](https://platform.openai.com/api-keys)
+- copy the file `.env.example` to `.env` and add your OpenAI API key
+- run the app: `npm run dev`
+- visit [127.0.0.1:1999](http://127.0.0.1:1999) in your browser
 
-Both are started with one command:
-
-```sh
-npm run dev
-```
-
-Open up [http://127.0.0.1:1999](http://127.0.0.1:1999) and you should be ready to go!
-
-If you want to check the production build, you can stop the dev server and run following commands:
-
-```sh
-npm run build
-npm start
-```
-
-Then refresh the same URL in your browser (no live reload for production builds).
-
-## Deployment
-
-```sh
-npm run deploy
-```
-
-If you don't already have a PartyKit account, you'll be prompted to create one during the deploy process.
-
-## Thanks
-
-_(This starter based on the original template for [Cloudflare Workers](https://github.com/remix-run/remix/tree/main/templates/cloudflare-workers))_
+If you make changes, you can deploy with `npm run deploy`. You will be prompted to sign in to PartyKit, and will be given the public URL of your deployed app at the end of the process. (Note it will take a few minutes for the URL to become active after the first deployment.)
