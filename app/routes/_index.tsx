@@ -11,7 +11,7 @@ export function loader() {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Partymix App" },
+    { title: "Image Describer" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };

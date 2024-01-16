@@ -35,14 +35,18 @@ export default function URLInput({
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-row justify-start items-center gap-2"
+      className="flex flex-row justify-center items-center gap-2 w-full"
     >
-      <label htmlFor="url">GDS blog post URL</label>
+      <label htmlFor="url" className="grow-0">
+        <a href="https://gds.blog.gov.uk" className="text-blue-600 underline">
+          GDS blog
+        </a>{" "}
+        post URL
+      </label>
       <div className="relative">
         <input
           type="text"
-          size={40}
-          className="border border-gray-400 rounded-sm p-2"
+          className="grow-1 border border-gray-400 rounded-sm p-2"
           value={input}
           placeholder="e.g. https://gds.blog.gov.uk/..."
           onChange={(e) => handleChange(e)}
@@ -55,7 +59,7 @@ export default function URLInput({
       </div>
       <button
         type="submit"
-        className="bg-blue-300 hover:bg-blue-400 p-2 rounded-sm"
+        className="grow-0 bg-blue-300 hover:bg-blue-400 p-2 rounded-sm"
       >
         Submit
       </button>
