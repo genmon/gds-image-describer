@@ -21,10 +21,16 @@ export default function Index() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen py-2 max-w-6xl mx-auto">
-      <div className="absolute top-2 right-2 sm:w-1/3 border border-1 border-gray-300 rounded p-2 text-gray-500 text-sm">
-        This demo uses GPT-4 with Vision to generate alt text for images. It
+      <div className="absolute top-2 right-2 max-w-80 border border-1 border-gray-300 rounded p-2 text-gray-500 text-sm">
+        This demo uses the GPT-4 Vision API to generate alt text for images. It
         helps us understand where this can be useful and what the limitations
-        are.
+        are.{" "}
+        <a
+          className="text-blue-600/70 underline"
+          href="https://github.com/genmon/gds-image-describer/blob/e505b26c1717757ba139ad1fad46fc073d9c29e7/party/vision.ts#L54"
+        >
+          See the prompt on GitHub.
+        </a>
       </div>
       <Describer partykitHost={partykitHost} />
     </main>
