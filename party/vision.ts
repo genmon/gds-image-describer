@@ -51,7 +51,7 @@ export default class VisionServer implements Party.Server {
           content: [
             {
               type: "text",
-              text: "Describe this image for a web user with limited sight. Maximum 12 words",
+              text: "Describe this image for a web user with limited sight. Use gender-neutral pronouns. Use British English spelling. Maximum 12 words",
             },
             {
               type: "image_url",
