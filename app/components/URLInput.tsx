@@ -37,7 +37,7 @@ export default function URLInput({
       onSubmit={handleSubmit}
       className="flex flex-row justify-center items-center gap-2 w-full"
     >
-      <label htmlFor="url" className="grow-0">
+      <label htmlFor="url">
         <a href="https://gds.blog.gov.uk" className="text-blue-600 underline">
           GDS blog
         </a>{" "}
@@ -59,7 +59,7 @@ export default function URLInput({
       </div>
       <button
         type="submit"
-        className="grow-0 bg-blue-300 hover:bg-blue-400 p-2 rounded-sm"
+        className="bg-blue-300 hover:bg-blue-400 p-2 rounded-sm"
       >
         Submit
       </button>
