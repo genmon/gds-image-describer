@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 import type { MetaFunction } from "partymix";
-import WhosHere from "../components/whos-here";
+import Describer from "~/components/Describer";
 
 // PartyKit will inject the host into the server bundle
 // so let's read it here and expose it to the client
@@ -21,7 +21,7 @@ export default function Index() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen py-2 max-w-6xl mx-auto">
-      <h1 className="text-6xl font-semibold">Hello, World!</h1>
+      <Describer partykitHost={partykitHost} />
     </main>
   );
 }
