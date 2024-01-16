@@ -60,6 +60,7 @@ export default class VisionServer implements Party.Server {
           ],
         },
       ],
+      max_tokens: 300,
     });
     console.log(response.choices[0]);
     return response.choices[0].message.content;
