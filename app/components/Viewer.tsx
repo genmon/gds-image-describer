@@ -12,16 +12,16 @@ export default function Viewer({
 }) {
   return (
     <div className="flex flex-col justify-start items-start gap-2">
-      <img src={imageUrl} alt="Image" />
       <div>
         <button
           className="text-sm text-black/70 underline"
           onClick={() => setImageUrl(null)}
         >
-          Try Another
+          &larr; Try Another
         </button>
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <img src={imageUrl} alt="Image" />
+      <Suspense fallback={<div>Generating description...</div>}>
         <AltTextSuggest partykitHost={partykitHost} imageUrl={imageUrl} />
       </Suspense>
     </div>

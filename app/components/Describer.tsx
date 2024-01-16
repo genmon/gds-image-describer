@@ -3,12 +3,8 @@ import URLInput from "./URLInput";
 import ImageList from "./ImageList";
 import Viewer from "./Viewer";
 
-// can be null
-const DEFAULT_URL =
-  "https://gds.blog.gov.uk/2024/01/12/how-were-making-it-easier-to-access-government-forms-online/";
-
 export default function Describer({ partykitHost }: { partykitHost: string }) {
-  const [url, setUrl] = useState<string | null>(DEFAULT_URL);
+  const [url, setUrl] = useState<string | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   if (!url) {
@@ -21,6 +17,7 @@ export default function Describer({ partykitHost }: { partykitHost: string }) {
         <ImageList
           partykitHost={partykitHost}
           url={url}
+          setUrl={setUrl}
           setImageUrl={setImageUrl}
         />
       )}

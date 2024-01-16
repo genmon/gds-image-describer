@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+// can be null
+const DEFAULT_URL =
+  "https://gds.blog.gov.uk/2024/01/12/how-were-making-it-easier-to-access-government-forms-online/";
+
 export default function URLInput({
   url,
   setUrl,

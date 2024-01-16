@@ -32,5 +32,9 @@ export default function AltTextSuggest({
     return await fetchDescription(partykitHost, imageUrl);
   }, [imageUrl]);
 
-  return <div>Description: {description}</div>;
+  return (
+    <div>
+      Description: <span className="bg-yellow-200">{description}</span>
+    </div>
+  );
 }

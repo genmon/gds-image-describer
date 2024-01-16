@@ -23,10 +23,12 @@ async function fetchImageList(partykitHost: string, url: string) {
 export default function ImageList({
   partykitHost,
   url,
+  setUrl,
   setImageUrl,
 }: {
   partykitHost: string;
   url: string | null;
+  setUrl: (url: string | null) => void;
   setImageUrl: (imageUrl: string | null) => void;
 }) {
   const { images } = suspend(async () => {
@@ -36,23 +38,37 @@ export default function ImageList({
 
   return (
     <div className="flex flex-col items-start justify-start gap-2">
+      <div>
+        <button
+          className="text-sm text-black/70 underline"
+          onClick={() => {
+            setUrl(null);
+            setImageUrl(null);
+          }}
+        >
+          &larr; Back
+        </button>
+      </div>
       <h3 className="text-2xl font-semibold">Images</h3>
       <p className="text-xs text-black/70">
         <span className="font-semibold">From URL:</span> <code>{url}</code>
       </p>
-      <ul className="list-disc">
+      <div className="flex flex-row flex-wrap gap-4">
         {images.map((imageUrl: string) => (
-          <li key={imageUrl}>
-            <code>{imageUrl}</code>
+          <div
+            key={imageUrl}
+            className="flex flex-col gap-2 justify-start items-start"
+          >
+            <img src={imageUrl} style={{ height: "200px", width: "auto" }} />
             <button
               className="bg-blue-300 hover:bg-blue-400 p-2 rounded-sm"
               onClick={() => setImageUrl(imageUrl)}
             >
-              Use
+              Describe
             </button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
