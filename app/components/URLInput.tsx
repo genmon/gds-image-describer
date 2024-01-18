@@ -25,10 +25,18 @@ export default function URLInput({
       setError("Please enter a URL");
       return;
     }
-    if (!input.match(/^https:\/\/gds.blog.gov.uk\/.*/)) {
-      setError("Please enter a valid GDS blog post URL");
+    // Check that the URL starts with 'https://.+.blog.gov.uk/?'
+    if (!input.match(/^https:\/\/.+.blog.gov.uk\/?.*/)) {
+      setError("Please enter a valid GOV.UK blog post URL");
       return;
     }
+
+    // Check that the pathname starts with '/\d{4}/'
+    if (!input.match(/^https:\/\/.+.blog.gov.uk\/\d{4}\/.*/)) {
+      setError("Please enter a URL to a single blog post");
+      return;
+    }
+
     setUrl(input);
   };
 
@@ -37,16 +45,11 @@ export default function URLInput({
       onSubmit={handleSubmit}
       className="flex flex-row justify-center items-center gap-2 w-full"
     >
-      <label htmlFor="url">
-        <a href="https://gds.blog.gov.uk" className="text-blue-600 underline">
-          GDS blog
-        </a>{" "}
-        post URL
-      </label>
+      <label htmlFor="url">GOV.UK blog post URL</label>
       <div className="relative">
         <input
           type="text"
-          className="grow-1 border border-gray-400 rounded-sm p-2"
+          className="grow-1 border border-gray-400 rounded-sm p-2 w-72"
           value={input}
           placeholder="e.g. https://gds.blog.gov.uk/..."
           onChange={(e) => handleChange(e)}
